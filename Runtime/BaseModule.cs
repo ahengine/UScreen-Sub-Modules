@@ -14,28 +14,25 @@ namespace UScreens.Modules
             owner = GetComponent<UPanel>();
             _repo = GetComponent<ModuleRepo>();
 
+            owner.OnShow += Show;
+            owner.OnHide += Hide;
+
             Initialize();
         }
 
         protected virtual void Initialize() { }
 
-        protected virtual void OnDestroy() { }
-
-        private void OnEnable()
-        {
-            owner.OnShow += Show;
-            owner.OnHide += Hide;
-
-            _repo.Active(this);
-        }
-
-        private void OnDisable()
+        protected virtual void OnDestroy()
         {
             owner.OnShow -= Show;
             owner.OnHide -= Hide;
-
-            _repo.Inactivate(this);
         }
+
+        private void OnEnable() => 
+            _repo.Active(this);
+
+        private void OnDisable() => 
+            _repo.Inactivate(this);
 
         internal virtual void Show() { }
         internal virtual void Hide() { }
