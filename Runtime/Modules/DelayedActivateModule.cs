@@ -12,12 +12,22 @@ namespace UScreens.Modules
             Hide(_hideDelay);
 
         public void Hide(float delay) =>
-            Invoke(nameof(base.Hide), delay);
+            Invoke(nameof(baseHide), delay);
         
+        private void baseHide()
+        {
+            base.Hide();
+        }
+
         internal override void Show() => 
             Show(_showDelay);
 
         public void Show(float delay) => 
-            Invoke(nameof(base.Show), _showDelay);
+            Invoke(nameof(baseShow), _showDelay);
+
+        private void baseShow()
+        {
+            base.Show();
+        }
     }
 }
