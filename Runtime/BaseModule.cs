@@ -32,7 +32,7 @@ namespace UScreens.Modules
             _repo.Active(this);
 
         private void OnDisable() => 
-            _repo.Inactivate(this);
+            _repo.Inactivate(this); 
 
         internal virtual void Show() { }
         internal virtual void Hide() { }
